@@ -89,5 +89,49 @@ Durante o desenvolvimento, o código também foi otimizado para corrigir pequeno
   $$\text{PIB per Capita} = \frac{\text{PIB}}{\text{População}}$$
 
 ```
+# 🃏 Super Trunfo: Países e Cidades (Em C)
+
+Este é um jogo interativo baseado no clássico **Super Trunfo**, desenvolvido em linguagem C. O programa permite o cadastro de duas cartas representando diferentes cidades brasileiras ou globais, calcula indicadores socioeconômicos importantes e realiza o confronto direto de atributos para determinar a carta vencedora.
+
+## 🚀 Funcionalidades
+
+- **Cadastro Dinâmico:** Entrada de dados via console para duas cartas distintas.
+- **Cálculo de Indicadores:** O sistema gera automaticamente:
+  - **Densidade Populacional:** Razão de habitantes por quilômetro quadrado ($hab/km²$).
+  - **PIB per Capita:** Divisão do PIB total pelo número de habitantes da região.
+  - **Super Poder:** Uma pontuação global unificada que mede a força total da carta.
+- **Sistema de Confronto:** Comparação direta de todos os dados cadastrados indicando o vencedor de cada rodada.
+
+---
+
+## 🏆 Regras de Comparação e o "Super Poder"
+
+As regras seguem a lógica matemática ideal para cada tipo de estatística regional:
+
+1. **Atributos Convencionais (Maior Vence):** Para *População, Área, PIB, Pontos Turísticos* e *PIB per Capita*, a carta com o **maior valor** ganha a disputa.
+2. **Densidade Populacional (Menor Vence):** Cidades menos saturadas demograficamente ganham o ponto. Portanto, o **menor valor** vence.
+3. **O Super Poder:** É a força total da carta. Para balancear o fato de que uma densidade populacional menor é mais benéfica, o cálculo inverte esse peso matematicamente:
+
+$$Super Poder = População + Área + PIB + Pontos Turísticos + PIB\ per\ Capita + \left(\frac{1}{Densidade}\right)$$
+
+---
+
+## 💻 Estrutura de Entrada de Dados
+
+Para cada carta, o usuário deverá preencher os seguintes dados no terminal:
+* **Estado:** Uma letra de `A` a `H`.
+* **Código da Carta:** Uma letra seguida de dois algarismos (Ex: `A01`, `B02`).
+* **Nome da Cidade:** Permite nomes compostos com espaços (Ex: `São Paulo`).
+* **População:** Quantidade total de habitantes (utiliza inteiros longos para grandes metrópoles).
+* **Área:** Extensão territorial em $km²$.
+* **PIB:** Produto Interno Bruto em bilhões de reais.
+* **Pontos Turísticos:** Quantidade de locais de interesse.
+
+---
+
+## 🛠️ Detalhes Técnicos de Implementação
+
+* **Tratamento de Buffer (`scanf`):** O código utiliza filtros avançados como `scanf(" %[^\n]s", ...)` que limpam automaticamente quebras de linha anteriores residuais e permitem a captura de nomes de cidades compostos sem que o programa pule etapas.
+* **Casting de Tipos:** Conversões explícitas de tipo `(float)` são feitas dinamicamente nas operações de divisão, impedindo que o compilador C descarte as casas decimais ao dividir variáveis inteiras de população (`unsigned long int`).
 Este projeto é de uso livre para fins acadêmicos e de estudo.
 # CartaSuperTrunfo
