@@ -135,3 +135,57 @@ Para cada carta, o usuário deverá preencher os seguintes dados no terminal:
 * **Casting de Tipos:** Conversões explícitas de tipo `(float)` são feitas dinamicamente nas operações de divisão, impedindo que o compilador C descarte as casas decimais ao dividir variáveis inteiras de população (`unsigned long int`).
 Este projeto é de uso livre para fins acadêmicos e de estudo.
 # CartaSuperTrunfo
+# 🃏 Jogo Super Trunfo - Países e Cidades (Em C)
+
+Este é um jogo interativo baseado no clássico **Super Trunfo**, desenvolvido na linguagem C para rodar diretamente no terminal. O projeto simula o cadastro de duas cartas com propriedades geográficas/econômicas de cidades e permite que o jogador dispute uma rodada contra o computador escolhendo qual atributo comparar.
+
+## 📋 Funcionalidades do Projeto
+
+*   **Cadastro de Cartas Dinâmico:** O usuário insere dados detalhados para duas cartas (Estado, Código, Nome da Cidade, População, Área, PIB e Pontos Turísticos).
+*   **Cálculos Automáticos (Métricas Avançadas):**
+    *   **Densidade Populacional:** $\text{População} \div \text{Área}$.
+    *   **PIB per Capita:** $\text{PIB} \div \text{População}$.
+    *   **Super Poder:** Soma de todas as propriedades da carta (com a densidade populacional invertida para manter o equilíbrio).
+*   **Escolha Inteligente de Cartas:** O jogador escolhe qual carta deseja usar para representá-lo no duelo.
+*   **Menu Interativo de Atributos:** Permite ao jogador selecionar o atributo que definirá o vencedor da partida.
+*   **Lógica Customizada de Vitória:** O sistema processa automaticamente empates e regras especiais onde o "menor valor vence".
+
+## ⚖️ Regras de Comparação
+
+O jogo adota regras matemáticas distintas dependendo do atributo escolhido no menu:
+1.  **Atributos Padrão (Maior Vence):** Para *População*, *Área*, *PIB*, *Pontos Turísticos* e *PIB per Capita*, a carta que tiver o **maior valor numérico** vence o duelo.
+2.  **Densidade Populacional (Menor Vence):** Seguindo a lógica do mundo real, no caso da densidade populacional, a cidade menos congestionada (com o **menor valor numérico**) é declarada a vencedora.
+
+## 🛠️ Como Executar o Projeto
+
+Você precisará de um compilador C (como o `gcc`) configurado em seu ambiente de desenvolvimento.
+
+### Passo a Passo no Terminal
+
+1.  Salve o código do jogo em um arquivo chamado `super_trunfo.c`.
+2.  Abra o terminal na pasta onde salvou o arquivo e faça a compilação:
+```bash
+    gcc super_trunfo.c -o super_trunfo
+    ```
+3.  Execute o programa:
+    *   **Linux/macOS:**
+```bash
+        ./super_trunfo
+        ```
+*   **Windows (CMD/PowerShell):**
+```cmd
+        super_trunfo.exe
+        ```
+
+## 💻 Estrutura Técnica do Código
+
+O código foi otimizado para evitar repetições desnecessárias de exibição na tela. Ele utiliza:
+*   `scanf(" %[^\n]s", ...)` para permitir a leitura correta de nomes de cidades compostos (com espaços).
+*   `unsigned long int` com a formatação `%lu` para garantir o armazenamento adequado de populações de grandes metrópoles.
+*   Estruturas condicionais (`switch` e `if-else`) acopladas a operadores lógicos (`&&` e `||`) para avaliar as condições de vitória do jogador e do computador em blocos limpos e de fácil manutenção.
+
+## 🚀 Próximas Atualizações (Ideias de Melhorias)
+
+*   **Implementar o Super Poder:** Adicionar o caso `case 7` dentro do menu de escolhas de atributos para habilitar o duelo usando a variável calculada `super_poder`.
+*   **Loop de Jogo (`do-while`):** Permitir que o usuário jogue múltiplas partidas ou cadastre novas cartas sem que o terminal feche automaticamente ao final.
+*   **Inteligência Artificial (IA) para o Rival:** Fazer com que o computador escolha o próprio atributo quando for o turno dele de jogar.
